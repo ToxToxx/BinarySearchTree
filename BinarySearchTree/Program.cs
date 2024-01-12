@@ -173,6 +173,28 @@
                 Console.Write(root.Data + " ");
             }
         }
+        public void PrintTree()
+        {
+            PrintTreeRec(Root, 0);
+        }
+
+        private void PrintTreeRec(BinaryTreeNode root, int level)
+        {
+            if (root != null)
+            {
+                PrintTreeRec(root.Right, level + 1);
+
+                for (int i = 0; i < level; i++)
+                {
+                    Console.Write("    ");
+                }
+
+                Console.WriteLine(root.Data);
+
+                PrintTreeRec(root.Left, level + 1);
+            }
+        }
+
     }
 
     class Program
@@ -189,6 +211,10 @@
             tree.Insert(70);
             tree.Insert(60);
             tree.Insert(80);
+
+            // Вывод бинарного дерева в виде рисунка
+            Console.WriteLine("Бинарное дерево:");
+            tree.PrintTree();
 
             // Обход бинарного дерева в порядке возрастания
             Console.WriteLine("Обход по возрастанию:");
